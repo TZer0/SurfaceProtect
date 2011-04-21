@@ -1,0 +1,17 @@
+name: SurfaceProtect
+main: tzer0.SurfaceProtect.SurfaceProtect
+version: 0.1
+author: TZer0
+commands:
+    surfprot:
+        description: Allows you to set surface protection settings.
+        usage: /surfprot
+    sp:
+        description: Allows you to set surface protection settings.
+        usage: /sp
+    alloweditems:
+        description: Shows what items are allowed
+        usage: /alloweditems
+    ai:
+        description: Shows what items are allowed
+        usage: /ai
