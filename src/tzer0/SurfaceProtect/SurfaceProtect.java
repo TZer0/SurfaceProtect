@@ -67,6 +67,8 @@ public class SurfaceProtect extends JavaPlugin {
         PluginManager tmp = getServer().getPluginManager();
         if (tmp.getPlugin("Towny") != null)  {
             towny = (Towny) tmp.getPlugin("Towny");
+        } else {
+            towny = null;
         }
         //tmp.registerEvent(Event.Type.PLAYER_COMMAND_PREPROCESS, playerListener, Priority.Normal, this);
         tmp.registerEvent(Event.Type.BLOCK_BREAK, blockListener, Priority.Normal, this);
@@ -160,7 +162,7 @@ public class SurfaceProtect extends JavaPlugin {
                 if (l == 3) {
                     WorldSettings set = ws.get(args[1]);
                     if (set != null) {
-                        set.setProtect(!args[2].equalsIgnoreCase("false"), sender);
+                        set.setProtect(!(args[2].equalsIgnoreCase("false") || args[2].equalsIgnoreCase("f")), sender);
                     } else {
                         sender.sendMessage(ChatColor.RED + "No such world: " + args[1]);
                     }
