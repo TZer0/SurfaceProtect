@@ -59,7 +59,7 @@ public class SurfaceProtectBlockListener extends BlockListener {
                 ||  (tmp != null && (!tmp.protect || block.getY() < tmp.ylimit))) {
             return false;
         } else {
-            pl.sendMessage(ChatColor.RED+"You are not allowed to modify blocks here, limit: " + tmp.ylimit);
+            pl.sendMessage(ChatColor.RED+plugin.errorMessage);
             return true;
         }
     }

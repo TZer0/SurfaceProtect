@@ -36,6 +36,7 @@ public class SurfaceProtect extends JavaPlugin {
     private final SurfaceProtectBlockListener blockListener = new SurfaceProtectBlockListener(this);
     public PermissionHandler permissions;
     public LinkedHashSet<Integer> allow;
+    String errorMessage;
     @SuppressWarnings("unused")
     private final String name = "SurfaceProtect";
     Towny towny;
@@ -54,6 +55,7 @@ public class SurfaceProtect extends JavaPlugin {
     public void onEnable() {
         pdfFile = this.getDescription();
         conf = getConfiguration();
+        errorMessage = conf.getString("errmsg", "You are not allowed to modify blocks here.");
         reloadWorlds();
         allow = new LinkedHashSet<Integer>();
         List<String> whitelist = conf.getKeys("allowed.");
@@ -118,6 +120,15 @@ public class SurfaceProtect extends JavaPlugin {
             if (l == 1 && (args[0].equalsIgnoreCase("reload") || args[0].equalsIgnoreCase("r"))) {
                 reloadWorlds();
                 sender.sendMessage(ChatColor.GREEN + "Done.");
+            } else if (l >= 1 && (args[0].equalsIgnoreCase("errormessage") || args[0].equalsIgnoreCase("em"))) {
+                if (l == 2) {
+                    errorMessage = args[1];
+                    conf.setProperty("errmsg", errorMessage);
+                    conf.save();
+                    sender.sendMessage(ChatColor.GREEN + "Saved.");
+                } else {
+                    sender.sendMessage(ChatColor.GREEN + "Current error message: " + errorMessage);
+                }
             } else if (l >= 1 && (args[0].equalsIgnoreCase("worlds") || args[0].equalsIgnoreCase("w"))) {
                 int page = 0;
                 if (l == 2) {
@@ -221,6 +232,7 @@ public class SurfaceProtect extends JavaPlugin {
             sender.sendMessage(ChatColor.YELLOW+"Help (commands start with /surfprot or /sp):");
             sender.sendMessage(ChatColor.YELLOW+"() denote aliases");
             sender.sendMessage(ChatColor.YELLOW+"(r)eload - reloads the world-settings");
+            sender.sendMessage(ChatColor.YELLOW+"(e)rror(m)essage - set/shows errormessage");
             sender.sendMessage(ChatColor.YELLOW+"(w)orlds - shows a list of worlds and their statuses");
             sender.sendMessage(ChatColor.YELLOW+"(s)et(l)imit world ylimit - ");
             sender.sendMessage(ChatColor.YELLOW+"adjusts how high you're allowed to mine");
