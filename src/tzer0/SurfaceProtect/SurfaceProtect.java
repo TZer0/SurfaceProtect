@@ -23,9 +23,8 @@ import ca.xshade.bukkit.towny.Towny;
 import com.nijiko.permissions.PermissionHandler;
 import com.nijikokun.bukkit.Permissions.Permissions;
 
-// TODO: Auto-generated Javadoc
 /**
- * Plugin for bukkit allowing players to purchase mcMMO-experience points using iConomy/BOSEconomy-money.
+ * Plugin for protecting surfaces.
  * 
  * @author TZer0
  */
@@ -240,7 +239,7 @@ public class SurfaceProtect extends JavaPlugin {
             sender.sendMessage(ChatColor.YELLOW+"adjust whether a world is protected");
             sender.sendMessage(ChatColor.YELLOW+"(t)oggle(p)rotect world - adjust protection");
             sender.sendMessage(ChatColor.YELLOW+"(w)hite(l)ist add itemid - add an item to the whitelist");
-            sender.sendMessage(ChatColor.YELLOW+"(w)hite(l)ist add itemid - remove an item from the whitelist");
+            sender.sendMessage(ChatColor.YELLOW+"(w)hite(l)ist del itemid - remove an item from the whitelist");
             sender.sendMessage(ChatColor.YELLOW+"Without /sp or /surfprot:");
             sender.sendMessage(ChatColor.YELLOW+"/(a)llowed(i)tems - for players: shows what items are allowed");
         }
